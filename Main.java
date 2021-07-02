@@ -24,7 +24,7 @@ public class Main {
 			decod.consome_arquivo_asm();
 			
 			try {
-				FileWriter writer = new FileWriter("C:\\Users\\Admin\\Documents\\.codeing\\T2 orgarq\\montagem.txt");
+				FileWriter writer = new FileWriter("C:\\Users\\T-Gamer\\Desktop\\Faculdade\\facul 3 sem\\Organização e Arquitetura de C. I\\Trab 3 Real\\ORGR\\montagem.txt");
 				
 				for(int i = 0; i<decod.mipsLines.size(); i++) {
 					writer.write(decod.codifica(i));
@@ -46,7 +46,7 @@ public class Main {
 			Converte conv = new Converte();
 			
 			try {
-				FileWriter writer = new FileWriter("C:\\Users\\Admin\\Documents\\.codeing\\T2 orgarq\\desmontagem.asm");
+				FileWriter writer = new FileWriter("C:\\Users\\T-Gamer\\Desktop\\Faculdade\\facul 3 sem\\Organização e Arquitetura de C. I\\Trab 3 Real\\ORGR\\desmontagem.asm");
 				
 				for(int i = 0; i<cod.hexCodes.size(); i++) {
 					writer.write(cod.decodifica(conv.hex_to_bin(cod.hexCodes.get(i))));

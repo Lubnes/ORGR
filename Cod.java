@@ -1,35 +1,71 @@
-/*
- * 
- * 
- * 
-	////// Desenvolvido por Gustavo Geyer e Luiza Nunes (ambos colorados) \\\\\\\\
- * 
- *  
- *  
-*/
-
+// /*
+//  * 
+//  * 
+//  * 
+// 	////// Desenvolvido por Gustavo Geyer e Luiza Nunes (ambos colorados) \\\\\\\\
+//  * 
+//  *  
+//  *  
+// */
+// //esse é o que vamos usarrr
 package orgarq;
 
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 public class Cod {
 	
 	ArrayList<String> hexCodes = new ArrayList<String>();	
 	Converte converte = new Converte();
+	ArrayList<Integer> data = new ArrayList<Integer>();
+	ArrayList<String> hexaInst = new ArrayList<String>();
+	Map<String,ArrayList<Integer>> dictI = new HashMap<String,ArrayList<Integer>>();
+	/*
+	#RegDest,WriteReg,ALUSrc,PCSrc,MemtoReg,Mem Read, Mem Write,
+# branch, ALUOp1, ALUp0,Jump
+
+#tipo i -> 0,0,0,1,mem write= 0,alu src =1,
+sinais = {
+    'j'   :  [0,0,0,0,0,0,,1],
+    'srl' :  [1,1,0,0,0,0,1,0,0], #tipo r
+    'slti':  [,,,,,,],
+    'addu' : [1,1,0,0,0,0,1,0,0],#TODO conferir
+    'lw'  :  [0,1,1,1,1,0,0,,0],
+    'beq' :  [0,0,0,0,0,0,1,,0],
+    'bne' :  [,,,,,,],
+    'ori' :  [,,,,,,],
+    'and' :  [1,1,0,0,0,0,1,0,0]#tipo r
+}
+
+tipoi = ['slti','ori','bne','beq']
+tipor = ['addu','and','srl']
+tipoj = ['j','jr']
+exe  = ['lw',lui,sw]
+
+	*/
 	
 	public void consome_arquivo_hex() throws FileNotFoundException { // Consome o arquivo com cod-objetos
-		File hexInput = new File("C:\\Users\\Admin\\Documents\\.codeing\\T2 orgarq\\hex.txt");
+		File hexInput = new File("C:\\Users\\T-Gamer\\Desktop\\Faculdade\\facul 3 sem\\Organização e Arquitetura de C. I\\Trab 3 Real\\ORGR\\hex.txt");
 		Scanner input = new Scanner(hexInput);
 		input.useDelimiter("\n");
-		
+		dictI.put(key, value);
+
+
 		if(hexInput.exists() && !hexInput.isDirectory()) {
 			try {
 				System.out.println("\n Lendo arquivo...");
+				hexCodes.add(input.nextLine());
 				while(input.hasNextLine()) {
 					hexCodes.add(input.nextLine().substring(2).replaceAll(" ", ""));
 				}
+				String[] aux = hexCodes.remove(0).split(" ");
+				for (String e : aux){
+					data.add(Integer.parseInt(e));
+				}
+				hexInst = hexCodes;
 			}
 			catch(Exception e) {
 				System.out.println("\n Erro na leitura do arquivo.");
@@ -37,8 +73,20 @@ public class Cod {
 			}
 			finally {}
 		}
-		else {System.out.println("\n Arquivo nao encontrado."); }
+		else {System.out.println("\n Arquivo nao encontrado."); 
+		}
 		input.close();
+		for (int i : data) {
+			System.out.println(i);
+		}
+		for (String s : inst) {
+			System.out.println(s);
+			s = decodifica(converte.hex_to_bin(s));
+			System.out.println(s);
+			//dictI.put(key, value);
+			//String[] s = dictI.get(key);
+		}
+		
 	}
 	
 	

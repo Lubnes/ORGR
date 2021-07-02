@@ -17,12 +17,15 @@ import java.util.Scanner;
 
 public class Decod {
 	ArrayList<String> mipsLines = new ArrayList<String>();
+
+	
+
 	Converte converte = new Converte();
 
 	int gPC = 0x00400000;
 
 	public void consome_arquivo_asm() throws FileNotFoundException { // Consome o arquivo com codigo mips
-		File asmInput = new File("C:\\Users\\Admin\\Documents\\.codeing\\T2 orgarq\\mips.asm");
+		File asmInput = new File("C:\\Users\\T-Gamer\\Desktop\\Faculdade\\facul 3 sem\\Organização e Arquitetura de C. I\\Trab 3 Real\\ORGR\\mips.asm");
 		Scanner input = new Scanner(asmInput);
 		input.useDelimiter("\n");
 
