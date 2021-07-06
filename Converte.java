@@ -8,7 +8,7 @@
  *  
 */
 
-package orgarq;
+
 
 public class Converte { // Classe para conversoes bitwise
 	
